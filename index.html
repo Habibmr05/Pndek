@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Kejutan Tersembunyi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f3ff;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #message-container {
+            text-align: center;
+            padding: 30px 20px; 
+            background-color: #ffffff;
+            border-radius: 15px; 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); 
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s;
+            width: 90%; 
+            max-width: 400px; 
+        }
+        #message-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #1a237e;
+            font-size: 1.5em; 
+            margin-bottom: 10px;
+        }
+        p {
+            color: #455a64;
+            font-size: 1em;
+        }
+        #middle-finger-image {
+            display: none;
+            width: 100%; 
+            max-height: 50vh; 
+            object-fit: contain;
+            margin-top: 25px;
+            border-radius: 15px;
+        }
+        .show-image {
+            display: block !important;
+            animation: fadeIn 0.7s ease-out; 
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="message-container">
+        <h1>Pakyu! 🖕</h1> 
+        <p>Klik di sini ketika ingin melihat pakyu yang lain.</p>
+    </div>
+
+    <img id="middle-finger-image" src="https://id.pinterest.com/pin/404268504072727456/" alt="Pesan Kejutan">
+
+    <script>
+        const messageContainer = document.getElementById('message-container');
+        const middleFingerImage = document.getElementById('middle-finger-image');
+        
+        // Simpan pesan awal yang sudah diubah ke variabel
+        const defaultMessage = messageContainer.innerHTML; 
+
+        messageContainer.addEventListener('click', function() {
+            if (middleFingerImage.classList.contains('show-image')) {
+                // KONDISI: Jika gambar sedang ditampilkan (Mengembalikan ke awal)
+                middleFingerImage.classList.remove('show-image');
+                messageContainer.innerHTML = defaultMessage;
+                messageContainer.style.backgroundColor = '#ffffff';
+            } else {
+                // KONDISI: Jika gambar TIDAK ditampilkan (Menampilkan kejutan)
+                middleFingerImage.classList.add('show-image');
+                
+                // PESAN KEJUTAN BARU (DINAMIS)
+                messageContainer.innerHTML = "<h1>MOTHERRR FATHERRR &#128077;</h1><p>Ini adalah kejutan motherrrr fatherrr! (Klik lagi untuk menyembunyikan)</p>";
+                
+                messageContainer.style.backgroundColor = '#e3f2fd'; 
+            }
+        });
+    </script>
+
+</body>
+</html>
